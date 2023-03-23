@@ -3,13 +3,21 @@ A kopf application to handle the creation of Postgres databases in response to i
 
 <ins>__Pre-requisites (assuming Windows host OS):__</ins>
 - Docker for Desktop (hosts WSL for minikube)
+
+
 - minikube
+
+
 - Postgres (15) installed on port 5432 (for the purposes of the demo controller)
 
 <ins>What's included:</ins>
 
 - Templates for Kubernetes resources (under /kubeResources) required to host the infrastructure to support the pg-kopf controller
+
+
 - DOCKERFILE to be used to build the required application container image
+
+
 - The pg-kopf controller Python application code
 
 <ins>Basic Infrastructure:</ins>
