@@ -1,0 +1,8 @@
+apiVersion: my.local/v1
+kind: PgDatabase
+metadata:
+  name: mynewdb
+spec:
+  server: pgsql #name used in the Service
+  db:
+    name: bob

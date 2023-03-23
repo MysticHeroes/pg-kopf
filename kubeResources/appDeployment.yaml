@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-kopf-deployment
+  labels:
+    app: pg-kopf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg-kopf
+  template:
+    metadata:
+      labels:
+        app: pg-kopf
+    spec:
+      containers:
+      - name: pg-kopf-pod
+        image: pg-kopf
+        imagePullPolicy: Never #set to Never because we're using Docker as a local image repo
+        envFrom:
+        - secretRef:
+            name: pguser-secret
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 250m
+          limits:
+            memory: 1Gi
+            cpu: 1
+      serviceAccountName: pg-kopf-controller
+      automountServiceAccountToken: true
