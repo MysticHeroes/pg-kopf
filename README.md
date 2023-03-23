@@ -41,13 +41,13 @@ A sample "pgDatabase" resource has been included with 'mynewdb.yaml'; the spec f
 <ins>Proposed Future Development:</ins>
 - Incorporate Kerberos authentication on Postgres and from Kubernetes using keytabs etc.
   - This resolves the issue of further user creation, secret management and multi-server management 
-- Host image in industry-standard repository solution
-- Use external name of postgres database server
-- Add further functionality to the controller, e.g. user management, tablespaces
+- Host image with an industry-standard repository
+- Use external name of Postgres database server
+- Add further functionality to the controller e.g. user management, tablespaces, etc.
 
 <ins>Current Limitations:</ins>
-- Using local Docker as image repo
-- Password authenticated Postgres connectivity
-- Service hard-coded to local host IP address
-- Secret for postgres user credentials (pguser-secret) created by command in minikube
-- To allow connectivity to Postgres via IP locally, you must update pg_hba.conf e.g. to allow 192.168.0.0/24 
+- Using local Docker as the image repository
+- Password-authenticated Postgres connectivity
+- Service resource IP address is hard-coded to local host IP address
+- Secret for Postgres user credentials (pguser-secret) created by command in minikube
+- To allow connectivity to Postgres via IP on localhost, you must update pg_hba.conf e.g. to allow 192.168.0.0/24 
