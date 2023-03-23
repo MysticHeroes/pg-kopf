@@ -22,13 +22,13 @@ A kopf application to handle the creation of Postgres databases in response to i
 
 <ins>Basic Infrastructure:</ins>
 
-- ServiceAccount, ClusterRole and ClusterRoleBinding are created and mapped to allow the container service account permissions to oversee ingresses for the defined CustomResourceDefinition (CRD) _pgDatabase_. 
+- ServiceAccount, ClusterRole and ClusterRoleBinding are created and mapped to allow the container service account permissions to oversee ingresses for the defined CustomResourceDefinition (CRD) _pgDatabase_ 
 
 
-- A Deployment is used for the application to provide automatic crash handling for our container in the event of pod failure.
+- A Deployment is used for the application to provide automatic crash handling for our container in the event of pod failure
 
 
-- The Service and Endpoint allow connectivity to the local Postgres instance hosted outside the Kubernetes cluster.
+- The Service and Endpoint allow connectivity to the local Postgres instance hosted outside the Kubernetes cluster
 
 <ins>Kopf Controller:</ins>
 
