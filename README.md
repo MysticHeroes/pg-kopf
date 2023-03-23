@@ -52,4 +52,4 @@ A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec f
 - Use external name of Postgres database server
 - Add further functionality to the controller e.g. user management, tablespaces, etc.
   - This will require adding new fields to the CRD, and updating the Python code to handle them
-- Create a helm chart derived from the YAML deployment files and inject customisation values during helm deploy
+- Create a helm chart derived from the YAML deployment files and inject customizations during helm deploy
