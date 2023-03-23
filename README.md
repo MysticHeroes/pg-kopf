@@ -25,7 +25,7 @@ A kopf application to handle the creation of Postgres databases in response to i
 - ServiceAccount, ClusterRole and ClusterRoleBinding are created and mapped to allow the container service account permissions to oversee ingresses for the defined CustomResourceDefinition (CRD) _pgDatabase_ 
 
 
-- A Deployment is used for the application to provide automatic crash handling for our container in the event of pod failure
+- A Deployment is used for the application to provide automatic crash handling for the container in the event of pod failure
 
 
 - The Service and Endpoint allow connectivity to the local Postgres instance hosted outside the Kubernetes cluster
@@ -52,3 +52,4 @@ A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec f
 - Use external name of Postgres database server
 - Add further functionality to the controller e.g. user management, tablespaces, etc.
   - This will require adding new fields to the CRD, and updating the Python code to handle them
+- Create a helm chart derived from the YAML deployment files and inject customisation values during helm deploy
