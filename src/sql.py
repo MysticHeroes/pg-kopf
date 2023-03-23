@@ -55,9 +55,9 @@ def create_database(target_server: str, target_database: str):
         if db_exists(target_server, target_database):
             _log_message('info', f"Database {target_database} created successfully")
         else:
-            _log_message('info', f"Failed to create database {target_database}")
+            _log_message('warning', f"Failed to validate database creation for {target_database}")
     except Exception as err:
-        _log_message('error', f"Error: {err}")
+        _log_message('error', f"Error occurred during database creation for {target_database}! Error: {err}")
     finally:
         if conn is not None:
             conn.close()

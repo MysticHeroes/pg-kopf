@@ -13,6 +13,6 @@ def _parse_spec_database_name (target_database: str) -> str:
     return target_database
 
 def _log_message (stream: str, msg: str):
-    # Only allow valid streams to not expose other methods and properties dynamically
+    # Validate output "stream" name, so as to not expose other methods and properties
     if stream in ("info", "warning", "error", "critical"):
         getattr(logging, stream)(msg)
