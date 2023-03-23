@@ -48,10 +48,7 @@ def db_exists(target_server: str, target_database: str) -> bool:
     finally:
         if conn is not None:
             conn.close()
-    if db is not None and target_database.lower() == db[0].lower():
-        return True
-    else:
-        return False
+    return db is not None and target_database.lower() == db[0].lower()
 
 
 # create_database
