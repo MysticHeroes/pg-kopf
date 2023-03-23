@@ -8,10 +8,15 @@ from utils import _log_message
 POSTGRES_USER = os.environ['POSTGRES_USER']
 POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
 
-def connect_pg(server: str):
+
+# connect_pg
+# description: Connect to input Postgres server, using secret credentials embedded in environment variables
+# inputs: target_server (str)
+# output: Connection
+def connect_pg(target_server: str):
     try:
         conn = psycopg2.connect(
-                host=server,
+                host=target_server,
                 database='postgres',
                 user=POSTGRES_USER,
                 password=POSTGRES_PASSWORD,
@@ -20,7 +25,13 @@ def connect_pg(server: str):
         raise kopf.PermanentError(f"Connection creation failure! Error: {err}")
     return conn
 
+
+# db_exists
+# description: Check existence of target database on the target server
+# inputs: target_server (str), target_database (str)
+# output: bool
 def db_exists(target_server: str, target_database: str) -> bool:
+    db = None
     try:
         conn = connect_pg(target_server)
         cur = conn.cursor()
@@ -32,18 +43,21 @@ def db_exists(target_server: str, target_database: str) -> bool:
         """, (target_database,))
         db = cur.fetchone()
         cur.close()
-        if db is not None:
-            if target_database.lower() == db[0].lower():
-                returnval = True
-        else:
-            returnval = False
     except Exception as err:
         _log_message('error', f"Failed to validate database existence! Error: {err}")
     finally:
         if conn is not None:
             conn.close()
-    return returnval
+    if db is not None and target_database.lower() == db[0].lower():
+        return True
+    else:
+        return False
 
+
+# create_database
+# description: Creates the target_database on the target_server
+# inputs: target_server (str), target_database (str)
+# output: None
 def create_database(target_server: str, target_database: str):
     try:
         conn = connect_pg(target_server)
