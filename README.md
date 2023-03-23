@@ -1,5 +1,5 @@
 # pg-kopf demo controller
-A kopf application to handle the creation of Postgres databases in response to ingresses of the pgDatabase type in a Kubernetes environment.
+A kopf application to handle the creation of Postgres databases in response to ingresses of the _pgDatabase_ type in a Kubernetes environment.
 
 <ins>__Pre-requisites (assuming Windows host OS):__</ins>
 - Docker for Desktop (hosts WSL for minikube)
@@ -22,7 +22,7 @@ A kopf application to handle the creation of Postgres databases in response to i
 
 <ins>Basic Infrastructure:</ins>
 
-- ServiceAccount, ClusterRole and ClusterRoleBinding are created and mapped to allow the container service account permissions to oversee ingresses for the defined CustomResourceDefinition (CRD) "pgDatabase". 
+- ServiceAccount, ClusterRole and ClusterRoleBinding are created and mapped to allow the container service account permissions to oversee ingresses for the defined CustomResourceDefinition (CRD) _pgDatabase_. 
 
 
 - A Deployment is used for the application to provide automatic crash handling for our container in the event of pod failure.
@@ -34,9 +34,9 @@ A kopf application to handle the creation of Postgres databases in response to i
 
 [Basic Workflow Diagram](docs/Diagram.png)
 
-The Python application uses the kopf module to query the cluster for ingresses of type pgDatabase within the 'my.local' group (as defined in the CRD). The pykube module provides Kerberos authentication to cluster API access, and finally, the psycopg2 module is used to connect to and query Postgres.
+The Python application uses the kopf module to query the cluster for ingresses of type _pgDatabase_ within the 'my.local' group (as defined in the CRD). The pykube module provides Kerberos authentication to cluster API access, and finally, the psycopg2 module is used to connect to and query Postgres.
 
-A sample "pgDatabase" resource has been included with 'mynewdb.yaml'; the spec format is extensible with simple revisions to the CRD allowing further defined fields to have associated actions programmed within the application. The current implementation will check for the existence of the database (as specified within the resource file) and create it, if necessary.
+A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec format is extensible with simple revisions to the CRD allowing further defined fields to have associated actions programmed within the application. The current implementation will check for the existence of the database (as specified within the resource file) and create it, if necessary.
 
 <ins>Proposed Future Development:</ins>
 - Incorporate Kerberos authentication on Postgres and from Kubernetes using keytabs etc.
