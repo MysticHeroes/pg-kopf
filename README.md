@@ -34,7 +34,7 @@ A kopf application to handle the creation of Postgres databases in response to i
 
 [Basic Workflow Diagram](docs/Diagram.png)
 
-The Python application uses the kopf module to query the cluster for ingresses of type pgDatabase within the 'my.local' group (as defined in the CRD), it uses the pykube module for Kerberos API access authentication to the cluster, and finally, the psycopg2 module to connect and query Postgres.
+The Python application uses the kopf module to query the cluster for ingresses of type pgDatabase within the 'my.local' group (as defined in the CRD). The pykube module provides Kerberos authentication to cluster API access, and finally, the psycopg2 module is used to connect to and query Postgres.
 
 A sample "pgDatabase" resource has been included with 'mynewdb.yaml'; the spec format is extensible with simple revisions to the CRD allowing further defined fields to have associated actions programmed within the application. The current implementation will check for the existence of the database (as specified within the resource file) and create it, if necessary.
 
