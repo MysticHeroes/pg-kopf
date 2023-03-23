@@ -38,16 +38,16 @@ The Python application uses the kopf module to query the cluster for ingresses o
 
 A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec format is extensible with simple revisions to the CRD allowing further defined fields to have associated actions programmed within the application. The current implementation will check for the existence of the database (as specified within the resource file) and create it, if necessary.
 
+<ins>Current Limitations:</ins>
+- Using the local Docker for Desktop as the image repository
+- Password-authenticated Postgres connectivity
+- Service resource IP address is hard-coded to local host IP address
+- Secret for Postgres user credentials (pguser-secret) created by command in minikube
+- To allow connectivity to Postgres via IP on localhost, you must update pg_hba.conf e.g. to allow 192.168.0.0/24
+
 <ins>Proposed Future Development:</ins>
 - Incorporate Kerberos authentication on Postgres and from Kubernetes using keytabs etc.
   - This resolves the issue of further user creation, secret management and multi-server management 
 - Host image with an industry-standard repository
 - Use external name of Postgres database server
 - Add further functionality to the controller e.g. user management, tablespaces, etc.
-
-<ins>Current Limitations:</ins>
-- Using local Docker as the image repository
-- Password-authenticated Postgres connectivity
-- Service resource IP address is hard-coded to local host IP address
-- Secret for Postgres user credentials (pguser-secret) created by command in minikube
-- To allow connectivity to Postgres via IP on localhost, you must update pg_hba.conf e.g. to allow 192.168.0.0/24 
