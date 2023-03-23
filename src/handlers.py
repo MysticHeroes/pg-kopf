@@ -11,6 +11,6 @@ spec:
   db:
     name: {target_database}""")
     if db_exists(target_server, target_database):
-        _log_message('warning', f"target database {target_database} already exists on {target_server}")
+        _log_message('warning', f"Target database {target_database} already exists on {target_server}")
     else:
         create_database(target_server, target_database)
