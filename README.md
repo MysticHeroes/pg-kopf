@@ -28,7 +28,7 @@ A kopf application to handle the creation of Postgres databases in response to i
 - A Deployment is used for the application to provide automatic crash handling for our container in the event of pod failure.
 
 
-- The Service and Endpoint allow connectivity to our Postgres instance hosted outside the Kubernetes cluster.
+- The Service and Endpoint allow connectivity to the local Postgres instance hosted outside the Kubernetes cluster.
 
 <ins>Kopf Controller:</ins>
 
@@ -41,7 +41,7 @@ A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec f
 <ins>Current Limitations:</ins>
 - Using the local Docker for Desktop as the image repository
 - Password-authenticated Postgres connectivity
-- Service resource IP address is hard-coded to local host IP address
+- Service resource IP address is hard-coded to the internal localhost IP address 
 - Secret for Postgres user credentials (pguser-secret) created by command in minikube
 - To allow connectivity to Postgres via IP on localhost, you must update pg_hba.conf e.g. to allow 192.168.0.0/24
 
@@ -51,3 +51,4 @@ A sample _pgDatabase_ resource has been included with 'mynewdb.yaml'; the spec f
 - Host image with an industry-standard repository
 - Use external name of Postgres database server
 - Add further functionality to the controller e.g. user management, tablespaces, etc.
+  - This will require adding new fields to the CRD, and updating the Python code to handle them
