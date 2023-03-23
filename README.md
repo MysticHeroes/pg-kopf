@@ -38,9 +38,9 @@ The Python application uses the kopf module to query the cluster for ingresses o
 
 A sample "pgDatabase" resource has been included with 'mynewdb.yaml'; the spec format is extensible with simple revisions to the CRD allowing further defined fields to have associated actions programmed within the application. The current implementation will check for the existence of the database (as specified within the resource file) and create it, if necessary.
 
-<ins>Proposed future development:</ins>
+<ins>Proposed Future Development:</ins>
 - Incorporate Kerberos authentication on Postgres and from Kubernetes using keytabs etc.
-  - This resolves the issue of further user creation, secret management and multi-server managemente 
+  - This resolves the issue of further user creation, secret management and multi-server management 
 - Host image in industry-standard repository solution
 - Use external name of postgres database server
 - Add further functionality to the controller, e.g. user management, tablespaces
